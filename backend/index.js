@@ -8,18 +8,32 @@ const { Server } = require("socket.io");
 require("dotenv").config();
 
 const app = express();
-const server = http.createServer(app); // use this instead of app.listen
+const server = http.createServer(app); 
+
+// Middleware
+app.use(cors({
+  origin: allowedOrigins,
+  methods: ["GET", "POST", "PATCH"],
+  credentials: true // only needed if you use cookies or Authorization headers
+}));
+app.use(express.json()); // Ensures req.body is populated
+
+// ✅ Replace these with your actual frontend deployment URLs
+const allowedOrigins = [
+  "https://invitationapplication.vercel.app",
+  "https://invitationapplicationstaff.vercel.app",
+  "https://invitationapplicationadmin.vercel.app"
+];
+
 const io = new Server(server, {
   cors: {
-    origin: "*", // ✅ Deployed frontend URL
+    origin: allowedOrigins, // ✅ Deployed frontend URL
     methods: ["GET", "POST", "PATCH"],
   },
 });
 const port = 5000;
 
-// Middleware
-app.use(cors());
-app.use(express.json()); // Ensures req.body is populated
+
 
 io.on("connection", (socket) => {
   console.log("Admin connected via socket:", socket.id);
