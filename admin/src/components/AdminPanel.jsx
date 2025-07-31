@@ -15,7 +15,7 @@ import {
 import io from "socket.io-client";
 
 // Replace with your backend URL if deployed
-const socket = io("http://localhost:5000");
+const socket = io("https://invitationapplication.onrender.com");
 
 const AdminPanel = () => {
   const [rsvpData, setRsvpData] = useState([]);
@@ -37,8 +37,8 @@ const AdminPanel = () => {
     const fetchData = async () => {
       try {
         const [rsvpResponse, statsResponse] = await Promise.all([
-          fetch("http://localhost:5000/api/rsvps"),
-          fetch("http://localhost:5000/api/stats"),
+          fetch("https://invitationapplication.onrender.com/api/rsvps"),
+          fetch("https://invitationapplication.onrender.com/api/stats"),
         ]);
 
         const rsvpData = await rsvpResponse.json();
@@ -226,7 +226,7 @@ const AdminPanel = () => {
       }
 
       const response = await fetch(
-        `http://localhost:5000/api/rsvp/${id}/attended`,
+        `https://invitationapplication.onrender.com/api/rsvp/${id}/attended`,
         {
           method: "PATCH",
           headers: {
