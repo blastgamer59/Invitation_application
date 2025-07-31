@@ -23,7 +23,7 @@ const StaffPanel = () => {
   const streamRef = useRef(null);
 
   // API Configuration (Local Development)
-  const API_BASE_URL = 'http://localhost:5000';
+  const API_BASE_URL = 'https://invitationapplication.onrender.com';
 
   // Load jsQR dynamically
   useEffect(() => {
