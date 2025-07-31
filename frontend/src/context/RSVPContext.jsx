@@ -18,7 +18,7 @@ export const RSVPProvider = ({ children }) => {
           }
         : data;
 
-      const response = await fetch("http://localhost:5000/api/rsvp", {
+      const response = await fetch("https://invitationapplication.onrender.com/api/rsvp", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -48,7 +48,7 @@ export const RSVPProvider = ({ children }) => {
   const verifyRSVP = async (confirmationNumber) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/rsvp/${confirmationNumber}`
+        `https://invitationapplication.onrender.com/api/rsvp/${confirmationNumber}`
       );
       const result = await response.json();
 
@@ -65,7 +65,7 @@ export const RSVPProvider = ({ children }) => {
 
   const scanQRCode = async (qrData) => {
     try {
-      const response = await fetch("http://localhost:5000/api/rsvp/scan", {
+      const response = await fetch("https://invitationapplication.onrender.com/api/rsvp/scan", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
