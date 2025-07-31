@@ -10,6 +10,13 @@ require("dotenv").config();
 const app = express();
 const server = http.createServer(app); 
 
+// ✅ Replace these with your actual frontend deployment URLs
+const allowedOrigins = [
+  "https://invitationapplication.vercel.app",
+  "https://invitationapplicationstaff.vercel.app",
+  "https://invitationapplicationadmin.vercel.app"
+];
+
 // Middleware
 app.use(cors({
   origin: allowedOrigins,
@@ -18,12 +25,7 @@ app.use(cors({
 }));
 app.use(express.json()); // Ensures req.body is populated
 
-// ✅ Replace these with your actual frontend deployment URLs
-const allowedOrigins = [
-  "https://invitationapplication.vercel.app",
-  "https://invitationapplicationstaff.vercel.app",
-  "https://invitationapplicationadmin.vercel.app"
-];
+
 
 const io = new Server(server, {
   cors: {
