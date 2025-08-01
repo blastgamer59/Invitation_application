@@ -62,6 +62,3 @@ This system was created to streamline the guest verification and tracking proces
 * **Event Honoree**: R. Geetavani 🎉
 
 
-
-I'm here to tailor it exactly as you need.
-```
